@@ -61,6 +61,7 @@ module "blog_alb" {
       protocol                          = "HTTP"
       deregistration_delay              = 10
       load_balancing_cross_zone_enabled = true
+      create_attachment = false
     }
   }
 

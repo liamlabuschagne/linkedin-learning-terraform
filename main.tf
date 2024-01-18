@@ -39,6 +39,7 @@ module "autoscaling" {
 
   vpc_zone_identifier = module.blog_vpc.public_subnets
   security_groups     = [module.blog_sg.security_group_id]
+  target_group_arns = [module.blog_alb.target_groups.ex_instance.arn]
 
   image_id      = data.aws_ami.app_ami.id
   instance_type = var.instance_type
@@ -58,7 +59,6 @@ module "blog_alb" {
       target_type       = "instance"
       backend_port      = 80
       backend_protocol  = "HTTP"
-      target_id = module.autoscaling.autoscaling_group_arn
     }
   }
 

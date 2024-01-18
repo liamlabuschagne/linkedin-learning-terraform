@@ -55,20 +55,22 @@ module "blog_alb" {
 
   target_groups = {
     ex_instance = {
-      name_prefix       = "blog-"
-      target_type       = "instance"
-      port      = 80
-      protocol  = "HTTP"
+      name_prefix                       = "blog-"
+      target_type                       = "instance"
+      port                              = 80
+      protocol                          = "HTTP"
+      deregistration_delay              = 10
+      load_balancing_cross_zone_enabled = true
     }
   }
 
   listeners = {
-    ex_https = {
-      port            = 80
-      protocol        = "HTTP"
+    ex_http = {
+      port                        = 80
+      protocol                    = "HTTP"
 
       forward = {
-        target_group_key = "ex_instance"
+        target_group_key = "ex-instance"
       }
     }
   }

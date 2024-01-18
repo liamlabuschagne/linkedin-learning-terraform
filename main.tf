@@ -57,8 +57,8 @@ module "blog_alb" {
     ex_instance = {
       name_prefix       = "blog-"
       target_type       = "instance"
-      backend_port      = 80
-      backend_protocol  = "HTTP"
+      port      = 80
+      protocol  = "HTTP"
     }
   }
 

@@ -59,7 +59,7 @@ module "alb" {
       targets = [
         {
           instance = aws_instance.blog.id
-          port     = optional(number, null)
+          port     = 80
         }
       ]
     }
